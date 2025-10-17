@@ -13,27 +13,22 @@ html, body, #root {
 
    font-family: "Outfit", sans-serif;
 }
-/* @theme {
+
+@theme {
   --color-primary: rgba(230, 204, 255, 0.5);
-} */
+}
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-:root {
-  --bg-color: white;
-  --text-color: black;
+.reset-tw :not(pre):not(code){
+  all:revert;
 }
 
-.dark {
-  --bg-color: #121212;
-  --text-color: white;
+.loader div:nth-child(2){
+  animation-delay: 0.2s;
 }
-
-/* Apply variables */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.4s ease, color 0.4s ease;
+.loader div:nth-child(3){
+  animation-delay: 0.4s;
 }

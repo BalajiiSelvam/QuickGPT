@@ -18,7 +18,7 @@ export const AppContextProvider = ({ children }) => {
 
     const fetchUserChats = async () => {
         setChats(dummyChats)
-        if (dummyChats.length > 0) setSelectedChat()
+        if (dummyChats.length > 0) setSelectedChat(dummyChats[0])
     }
 
 
