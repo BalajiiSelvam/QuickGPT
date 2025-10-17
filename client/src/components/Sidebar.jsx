@@ -3,17 +3,17 @@ import { useAppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import moment from 'moment'
 
-const Sidebar = () => {
+const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
   const { chats, setSelectedChat, theme, setTheme, user, navigate } = useAppContext()
   const [search, setSearch] = useState('')
 
   return (
     <div
-      className='flex flex-col h-screen min-w-[18rem] p-5
+      className={`flex flex-col h-screen min-w-[18rem] p-5
       dark:bg-gradient-to-b from-[#242124]/30 to-[#000000]/30
       border-r border-gray-300 dark:border-[#80609F]/20
       backdrop-blur-3xl transition-all duration-500
-      max-md:absolute max-md:top-0 max-md:left-0 max-md:z-10'
+      max-md:absolute max-md:top-0 max-md:left-0 max-md:z-10 ${!isMenuOpen && 'max-md:-translate-x-full'}`}
     >
       {/* Logo */}
       <img
@@ -63,7 +63,7 @@ const Sidebar = () => {
           .map((chat) => (
             <div
               key={chat._id || chat.name}
-              onClick={() => setSelectedChat(chat)}
+              onClick={() => {navigate('/'); setSelectedChat(chat); setIsMenuOpen(false)}}
               className='p-2 px-4 dark:bg-[#57317C]/10 border border-gray-300
               dark:border-[#80609F]/20 rounded-md cursor-pointer flex justify-between items-start
               group hover:bg-gray-100 dark:hover:bg-[#57317C]/20 transition'
@@ -88,7 +88,7 @@ const Sidebar = () => {
       </div>
 
       {/* Community Images */}
-      <div onClick={() => navigate('/community')}
+      <div onClick={() => {navigate('/community'); setIsMenuOpen(false)}}
         className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md 
         cursor-pointer hover:bg-gray-100 dark:hover:bg-[#57317C]/20 hover:scale-105 transition-all'>
         <img src={assets.gallery_icon} className={`w-4.5 ${theme === 'light' ? 'invert' : ''}`} alt="" />
@@ -98,7 +98,7 @@ const Sidebar = () => {
       </div>
 
       {/* Credit Purchase Option */}
-      <div onClick={() => navigate('/credits')}
+      <div onClick={() => { navigate('/credits'); setIsMenuOpen(false)}}
       className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md 
       cursor-pointer hover:bg-gray-100 dark:hover:bg-[#57317C]/20 hover:scale-105 transition-all'>
         <img src={assets.diamond_icon} className={`w-4.5 ${theme === 'dark' ? 'invert' : ''}`} alt="" />
@@ -135,7 +135,7 @@ const Sidebar = () => {
           {user && <img src={assets.logout_icon} className='h-5 cursor-pointer hidden not-dark:invert group-hover:block'/>}
       </div>
 
-      <img src={assets.close_icon} className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert' alt="" />
+      <img onClick={() => setIsMenuOpen(false)} src={assets.close_icon} className='absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert' alt="" />
     </div>
   )
 }
