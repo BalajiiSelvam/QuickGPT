@@ -6,7 +6,9 @@
 /* @custom-variant dark(&:where(.dark, .dark *)); */
 html, body, #root {
   height: 100%;
+  background-color: transparent !important;
 }
+
 
 *{
     transition: background-color 0.3s, color 0.3s;
@@ -15,7 +17,7 @@ html, body, #root {
 }
 
 @theme {
-  --color-primary: rgba(230, 204, 255, 0.5);
+  --color-primary: #E6CCFF;
 }
 
 ::-webkit-scrollbar {

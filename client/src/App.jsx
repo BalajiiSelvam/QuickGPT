@@ -11,7 +11,7 @@ import { useAppContext } from './context/AppContext'
 import Login from './pages/Login'
 
 const App = () => {
-  const { user } = useAppContext()   
+  const { user, theme } = useAppContext()   // ✅ FIXED: include theme
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { pathname } = useLocation()
 
@@ -28,7 +28,12 @@ const App = () => {
       )}
 
       {user ? (
-        <div className="bg-white text-black dark:bg-gradient-to-b dark:from-[#242124] dark:to-[#000000] dark:text-white">
+        <div
+          className={`min-h-screen min-w-full transition-colors duration-300
+            ${theme === 'dark'
+              ? 'bg-gradient-to-b from-[#242124] to-[#000000] text-white'
+              : 'bg-white text-black'}`}
+        >
           <div className="flex h-screen w-screen">
             <Sidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             <Routes>

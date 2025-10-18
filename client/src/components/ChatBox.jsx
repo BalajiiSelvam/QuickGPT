@@ -37,7 +37,7 @@ const ChatBox = () => {
   // Typing Effect
   useEffect(() => {
     const currentText = texts[index % texts.length]
-    const speed = isDeleting ? 60 : 120
+    const speed = isDeleting ? 60 : 40
 
     const timer = setTimeout(() => {
       setDisplayText(prev =>

@@ -17,11 +17,12 @@ const Sidebar = ({isMenuOpen, setIsMenuOpen}) => {
     >
       {/* Logo */}
       <img
-        src={theme === 'light' ? assets.logo_full_dark : assets.logo_full}
+        src={theme === 'dark' ? assets.logo_full : assets.logo_full_dark}
         alt="Logo"
         className='w-full max-w-[12rem] flex-shrink-0'
       />
 
+        
       {/* New Chat Button */}
       <button
         onClick={() => console.log("🆕 New Chat clicked")}
